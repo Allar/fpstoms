@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>FPS to MS</title>
+    <meta name="description" content="A simple tool for converting Frames Per Second to and from Milliseconds." />
+    <meta name="author" content="Michael Allar @michaelallar" />
+    <meta property="og:title" content="FPS to MS" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://fpstoms.com" />
+    <meta property="og:description" content="A simple tool for converting Frames Per Second to and from Milliseconds." />
+    <meta property="og:image" content="image.png" />
+    <link rel="icon" href="/favicon.ico" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link href="/css/styles.css" rel="stylesheet" />
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.js"></script>
+  </head>
+
+  <body class="bg-gray-700">
+    <div x-data="timing">
+      <!-- common card -->
+      <div class="container mt-8 mx-auto">
+        <div class="shadow sm:rounded-md overflow-hidden">
+          <div class="px-4 py-5 bg-gray-400 space-y-6 sm:p-6">
+            <div class="grid grid-cols-2 gap-3 items-center justify-center">
+              <div class="col-span-2">
+                <p class="text-3xl text-center">FPS to MS</p>
+                <p class="text-xl text-center">Frames Per Second to Milliseconds</p>
+              </div>
+              <div class="col-span-2 mx-auto text-center">
+                A website by <a class="underline" href="https://twitter.com/michaelallar">Michael Allar</a> who was tired of not having this exact reference. Make it better and contribute to the <a class="underline" href="https://github.com/Allar/fpstoms">Github Repo</a>.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- common card -->
+      <div class="container mt-5 mx-auto">
+        <div class="shadow sm:rounded-md overflow-hidden">
+          <div class="px-4 py-5 bg-gray-400 space-y-6 sm:p-6">
+            <div class="grid grid-cols-2 gap-3 items-center justify-center">
+              <div class="col-span-2">
+                <p class="text-xl text-center">Common Frame Rates and Intervals</p>
+              </div>
+              <div class="col-span-2 sm:col-span-1 sm:mt-2 mx-auto text-center">
+                <p class="text-lg mb-4">Games</p>
+                <ul class="mt-2">
+                  <li class="mt-1">30 FPS is 33.33333 MS</li>
+                  <li class="mt-1">60 FPS is 16.66666 MS</li>
+                  <li class="mt-1">90 FPS is 11.11111 MS</li>
+                  <li class="mt-1">120 FPS is 8.333333 MS</li>
+                  <li class="mt-1">140 FPS is 7.142857 MS</li>
+                  <li class="mt-1">144 FPS is 6.944444 MS</li>
+                  <li class="mt-1">180 FPS is 5.555555 MS</li>
+                  <li class="mt-1">240 FPS is 4.166666 MS</li>
+                </ul>
+              </div>
+              <div class="col-span-2 sm:col-span-1 mt-6 sm:mt-2 mx-auto text-center">
+                <p class="text-lg mb-4">Film</p>
+                <ul class="mt-2">
+                  <li class="mt-1">23.976 FPS is 41.70838 MS</li>
+                  <li class="mt-1">24.000 FPS is 41.66666 MS</li>
+                  <li class="mt-1">25.000 FPS is 40.00000 MS</li>
+                  <li class="mt-1">29.970 FPS is 33.33333 MS</li>
+                  <li class="mt-1">30.000 FPS is 33.33333 MS</li>
+                  <li class="mt-1">48.000 FPS is 20.83333 MS</li>
+                  <li class="mt-1">59.940 FPS is 16.68335 MS</li>
+                  <li class="mt-1">60.000 FPS is 16.66666 MS</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- converter card -->
+      <div class="container mt-5 mx-auto">
+        <div class="shadow sm:rounded-md overflow-hidden">
+          <div class="px-4 py-5 bg-gray-400 space-y-6 sm:p-6">
+            <div class="grid grid-cols-3 gap-6 items-center">
+              <div class="col-span-3">
+                <p class="text-xl text-center">Converter</p>
+              </div>
+              <div class="col-span-1">
+                <div class="mt-1 flex rounded-md shadow-sm">
+                  <input
+                    type="number"
+                    name="fps"
+                    id="fps"
+                    x-model.number="desiredFPS"
+                    class="
+                      focus:ring-indigo-500 focus:border-indigo-500
+                      flex-1
+                      block
+                      w-full
+                      rounded-none rounded-l-md
+                      sm:text-sm
+                      border-gray-300
+                    "
+                  />
+                  <span
+                    class="
+                      inline-flex
+                      items-center
+                      px-3
+                      rounded-none rounded-r-md
+                      border border-l-0 border-gray-300
+                      bg-gray-50
+                      text-gray-500 text-sm
+                    "
+                  >
+                    FPS
+                  </span>
+                </div>
+              </div>
+              <div class="col-span-1">
+                <div class="mt-1 text-center align-center">is</div>
+              </div>
+              <div class="col-span-1">
+                <div class="mt-1 flex rounded-md shadow-sm">
+                  <input
+                    type="number"
+                    name="ms"
+                    id="ms"
+                    x-model.number="desiredMS"
+                    class="
+                      focus:ring-indigo-500 focus:border-indigo-500
+                      flex-1
+                      block
+                      w-full
+                      rounded-none rounded-l-md
+                      sm:text-sm
+                      border-gray-300
+                    "
+                  />
+                  <span
+                    class="
+                      inline-flex
+                      items-center
+                      px-3
+                      rounded-none rounded-r-md
+                      border border-l-0 border-gray-300
+                      bg-gray-50
+                      text-gray-500 text-sm
+                    "
+                  >
+                    MS
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- end converter card -->
+    </div>
+  </body>
+</html>
+
+<script>
+  TIME_TYPE_FPS = 0;
+  TIME_TYPE_MS = 1;
+  TIME_TYPE_S = 2;
+
+  reportUnsupportedIntervalConvert = (interval, intervalType, desiredType) => {
+    console.error(`Converting interval ${interval} from type ${intervalType} to type ${desiredType} is currently unsupported.`);
+    return interval;
+  };
+
+  intervalConvert = (interval, intervalType, desiredType) => {
+    if (interval == 0) return 0;
+    if (intervalType === desiredType) return interval;
+
+    switch (true) {
+      case (intervalType == TIME_TYPE_FPS && desiredType == TIME_TYPE_S):
+        return 1.0 / interval
+      case (intervalType == TIME_TYPE_FPS && desiredType == TIME_TYPE_MS):
+        return 1000.0 / interval
+      case (intervalType == TIME_TYPE_S && desiredType == TIME_TYPE_MS):
+        return 1000.0 * interval
+      case (intervalType == TIME_TYPE_S && desiredType == TIME_TYPE_FPS):
+        return 1.0 / interval
+      case (intervalType == TIME_TYPE_MS && desiredType == TIME_TYPE_S):
+        return interval / 1000.0
+      case (intervalType == TIME_TYPE_MS && desiredType == TIME_TYPE_FPS):
+        return 1000.0 / interval
+      default:
+        return reportUnsupportedIntervalConvert(interval, intervalType, desiredType)
+    }
+  };
+  document.addEventListener("alpine:init", () => {
+    Alpine.data("timing", () => ({
+      intervalType: TIME_TYPE_FPS,
+      interval: 60,
+
+      get desiredFPS() {
+        return intervalConvert(this.interval, this.intervalType, TIME_TYPE_FPS)
+      },
+
+      set desiredFPS(v) {
+        this.intervalType = TIME_TYPE_FPS
+        this.interval = v;
+      },
+
+      get desiredMS() {
+        return intervalConvert(this.interval, this.intervalType, TIME_TYPE_MS)
+      },
+
+      set desiredMS(v) {
+        this.intervalType = TIME_TYPE_MS
+        this.interval = v;
+      },
+    }));
+  });
+</script>
